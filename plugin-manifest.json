@@ -1,0 +1,19 @@
+{
+  "locale": [
+    "en"
+  ],
+  "service": "FINANCE",
+  "modules": {
+    "widgets": [
+      {
+        "location": "customer.creation.sidebar",
+        "widget_type": "modal",
+        "name": "Pick the Address",
+        "url": "/app/pick_address.html",
+        "logo": "/app/img/logo.png"
+      }
+    ]
+  },
+  "config": [],
+  "usedConnectors": []
+}
