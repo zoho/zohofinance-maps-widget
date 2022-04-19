@@ -103,12 +103,12 @@
 	</div>
 
 	<script src="https://js.zohostatic.com/zohofinance/v1/zf_sdk.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ1iHCDKVAlCn39eZ3Lt55tuEfhREmIjU&callback=initMap" type="text/javascript"></script>
 
 	<script>
 		window.onload = function () {
 			ZFAPPS.extension.init().then(function (App) {
 				// Initializing SDK.
+				loadGmapSDK();
 				ZFAPPS.invoke('RESIZE', { height: "600px", width: "1000px" }).then(() => {
 
    			});
