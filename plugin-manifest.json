@@ -15,5 +15,17 @@
     ]
   },
   "config": [],
-  "usedConnectors": []
+  "usedConnections": [
+    {
+      "connectionLinkName": "addresstypeahead_books_connection",
+      "connectionName": "addresstypeahead_books_connection",
+      "serviceName": "zoho_books",
+      "userAccess": true,
+      "isUserDefinedService": false,
+      "sharedBy": 776815210,
+      "scope": [
+        "ZohoBooks.fullaccess.all"
+      ]
+    }
+  ]
 }
