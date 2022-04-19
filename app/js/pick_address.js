@@ -2,6 +2,47 @@ let map;
 let geocoder;
 let marker;
 
+async function loadGmapSDK() {
+	let orgDetailsJson = await window.ZFAPPS.get('organization');
+	let { organization_id , data_center_extension } = orgDetailsJson['organization'];
+
+	let domainAPI = `https://books.zoho${data_center_extension}/api/v3`;
+	let connection_link_name = 'addresstypeahead_books_connection';
+
+	try {
+		let orgVariablesJson = await window.ZFAPPS.request({
+			url: `${domainAPI}/settings/orgvariables/vl__u9w51_gmap_api_key`,
+			method: 'GET',
+			url_query: [
+				{
+					key: 'organization_id',
+					value: organization_id
+				}
+			],
+			connection_link_name: connection_link_name
+		}).catch((error) => {
+			console.error(error);
+		});
+
+		let response = JSON.parse(orgVariablesJson.data.body);
+		let { orgvariable: { value } } = response;
+
+    injectGMapSDK(value);
+
+	} catch (err) {
+		console.log('Error in request', err);
+	}
+}
+
+function injectGMapSDK(API_KEY) {
+  let head = document.getElementsByTagName("head")[0];
+  let script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+  script.type = "text/javascript";
+  head.appendChild(script);
+}
+
+
 function initMap() {
   let location = { lat: -34.397, lng: 150.644 };
   map = new google.maps.Map(document.getElementById("map"), {
